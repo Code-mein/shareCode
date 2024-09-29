@@ -1,18 +1,17 @@
 
 import React from 'react'
-import EditorWindow from './EditorWindow'
+import EditorWindow from '../EditorWindow'
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
-import CapturedLines from './Group/CapturedLines'
-import Header from './Group/Header'
-import {Button} from "@/components/ui/button"
-import { DoorClosed, LucideSunSnow, Minimize, Minimize2, Minus, ShieldClose, X } from 'lucide-react'
+import CapturedLines from '../Group/CapturedLines'
+import Header from '../Group/Header'
 
 export default function App() {
   const [display, setDisplay] = React.useState("block")
+
   const handleClick = (e) => {
     switch (e.detail) {
       case 1:

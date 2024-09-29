@@ -1,11 +1,22 @@
-import React from 'react'
-
+import {Link} from "react-router-dom"
 export default function Header() {
   const heads = [
-    "Home",
-    "About",
-    "Log In",
-    "Create Account",
+    {
+      name:"Home",
+      path: "/"
+    },
+    {
+      name:"About",
+      path: "/about"
+    },
+    {
+      name:"Create Account",
+      path: "/createAccount"
+    },
+    {
+      name:"Login",
+      path: "/login"
+    },
   ]
   return (
     <div className='flex justify-between px-10 w-full '>
@@ -14,11 +25,11 @@ export default function Header() {
       </div>
       <div className=' flex  gap-10   '>
       {
-        heads.map((head) => {
+        heads.map((head, index) => {
           return (
-            <div>
-              {head}
-            </div>
+            <Link to={head.path} key={index}>
+              {head.name}
+            </Link>
           )
       })
     }

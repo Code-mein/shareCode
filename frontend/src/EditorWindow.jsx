@@ -1,9 +1,9 @@
 import { Editor } from '@monaco-editor/react';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 import { useCapturedLines } from './store/useCapturedLines';
 import {useCurrentMainCode} from './store/useCurrentMainCode';
-import { ArrowBigLeft, Copy, CopyCheck, Download, DownloadCloud, DownloadIcon, FileDown, GitCommit, Highlighter, Info, LucideShare, MoveDown, PenBox, PenLine, Plus, ScreenShare, Share, Share2, ShareIcon, SwitchCamera, Upload } from 'lucide-react';
+import { ArrowBigLeft, Copy, CopyCheck, Download, DownloadCloud, DownloadIcon, FileDown, GitCommit, Highlighter, Info, LucideShare, MoveDown, PenBox, PenLine, Plus, RefreshCcw, ScreenShare, Share, Share2, ShareIcon, SwitchCamera, Upload } from 'lucide-react';
 import { ShadowInnerIcon, Share1Icon, Share2Icon } from '@radix-ui/react-icons';
 
 export default function EditorWindow() {
@@ -34,10 +34,24 @@ export default function EditorWindow() {
       addLine({line: selectedText, comment: 'no comment Yet'});
       }
   };
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      alert("save")
+    }, 1000); // Adjust the delay as needed
+
+    // Cleanup the timeout if the user types again
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [editorValue]);
+
   const onChange = (value) => {
     const editor = editorRef.current;
     if(editor){
       setCurrentModel(editor.getModel());
+      setEditorValue(value)
+      console.log(value)
     }
 
   }
@@ -49,6 +63,9 @@ export default function EditorWindow() {
           
       <button onClick={getSelectedText}>
         <PenLine/>
+      </button>
+      <button>
+        <RefreshCcw/>
       </button>
       <button>
         <Plus/>

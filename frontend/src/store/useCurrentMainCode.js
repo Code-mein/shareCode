@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const   useCurrentMainCode = create((set, ss) => ({
+export const   useCurrentMainCode = create((set) => ({
   currentModel: null,
   setCurrentModel: (model) => set({ currentModel: model }),
   addValue: (value,model) => {
