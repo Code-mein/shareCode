@@ -28,17 +28,18 @@ export default function App() {
   };
   return (
     <div className=' h-[100vh]'>
-      <div className='w-full py-4'>
+      <div className='w-full py-4 hidden md:block'>
         <Header/>
       </div>
-     <ResizablePanelGroup direction="horizontal" 
-
-     >
+     <ResizablePanelGroup direction="horizontal">
   <ResizablePanel className="h-full bg-[#09090B]"  title="dfdf">
     <EditorWindow/>
   </ResizablePanel>
   <ResizableHandle withHandle onClick={handleClick}/>
-  <ResizablePanel className={display} title="Captured Lines"
+  <ResizablePanel 
+    // className={display}
+    className="hidden" 
+    title="Captured Lines"
   >
     <div className='flex justify-between px-5 flex-wrap items-center w-full'>
         <p className='text-center'>Captured Lines</p>

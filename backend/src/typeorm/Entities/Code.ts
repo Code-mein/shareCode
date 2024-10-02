@@ -1,17 +1,23 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Capture } from "./Capture";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Capture } from './Capture';
 
-@Entity({name: 'code'})
-export class Code{
+@Entity({ name: 'code' })
+export class Code {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'text' })
   code: string;
 
-  @Column()
+  @CreateDateColumn()
   timeStamp: Date;
 
-  @OneToMany(() => Capture, capture => capture.code)
+  @OneToMany(() => Capture, (capture) => capture.code)
   capture: Capture[];
 }

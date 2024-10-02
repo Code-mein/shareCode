@@ -1,19 +1,25 @@
-import e from "express";
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Code } from './Code';
 
-@Entity({name: 'sheet'})
-export class Sheet{
+@Entity({ name: 'sheet' })
+export class Sheet {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({unique: true})
+  @Column({ unique: true })
   url: string;
 
-  @OneToOne(() => Sheet)
-  sheet: Sheet;
+  @OneToOne(() => Code)
+  @JoinColumn()
+  code: Code;
 
-  @Column()
-  timeStamp: Date;
-
-
+  @CreateDateColumn()
+  created_at: Date; // Creation date
 }

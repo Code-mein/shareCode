@@ -66,6 +66,7 @@ export default function Captured({lines, catureNumber}) {
       </div>
       <p className='text-xs text-[#252525] '>Highlited Code :</p>
       <Editor
+      key="editor for captured code vanvas"
       theme='vs-dark'
       onChange={onChange}
       value={lines.line}
@@ -97,7 +98,7 @@ export default function Captured({lines, catureNumber}) {
         </div>
         <div className='pt-3 text-sx'>
           {["dsadsadsa","Helloworld","JUst a trip"].map((comment,index) => (
-            <div className='flex gap-2 border-t py-3 border-gray-500'>
+            <div key={index} className='flex gap-2 border-t py-3 border-gray-500'>
               <div>
                 C{index+1} -
               </div>
